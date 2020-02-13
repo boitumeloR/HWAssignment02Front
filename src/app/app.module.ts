@@ -12,8 +12,10 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatTableModule } from '@angular/material/table';
 import { RegisterComponent } from './register/register.component';
 import { MatFormFieldControl, MatFormFieldModule } from '@angular/material/form-field';
+import {MatInputModule} from '@angular/material/input';
 import { from } from 'rxjs';
 import { CdkTableModule } from '@angular/cdk/table';
+import { MatButtonModule } from '@angular/material/button';
 
 const routes = [
   {
@@ -43,8 +45,10 @@ const routes = [
     MatIconModule,
     CdkTableModule,
     MatFormFieldModule,
-    MatIconModule
-  ],
+    MatIconModule,
+    MatInputModule,
+    MatButtonModule
+  ] ,
   providers: [],
   bootstrap: [AppComponent]
 })
