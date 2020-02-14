@@ -2,7 +2,7 @@
 <h1>Login</h1>
 <div class="parent">
     <div class="child">
-        <form (submit) = "Logon(e)">
+        <form (ngSubmit) = "Logon($event)">
             <mat-form-field appearance="outline">
                 <mat-label>Username / Email</mat-label>
                 <input matInput placeholder="Email Address" class="email">

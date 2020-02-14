@@ -7,13 +7,21 @@ import { Component, OnInit } from '@angular/core';
 })
 export class LoginComponent implements OnInit {
 
+  loginBody: object;
   constructor() { }
 
   ngOnInit(): void {
   }
 
     Logon(el) {
-      console.log(el.target);
+      const target = el.target;
+      const username = target.querySelector('.email').value;
+      const password = target.querySelector('.password').value;
+
+      this.loginBody = {
+        username,
+        password
+      };
     }
 
 }
