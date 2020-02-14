@@ -16,30 +16,27 @@ import {MatInputModule} from '@angular/material/input';
 import { from } from 'rxjs';
 import { CdkTableModule } from '@angular/cdk/table';
 import { MatButtonModule } from '@angular/material/button';
+import { LoginComponent } from './login/login.component';
+import { FormsModule } from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http';
+import { AddPlayerComponent } from './add-player/add-player.component';
+import { UpdatePlayerComponent } from './update-player/update-player.component';
 
-const routes = [
-  {
-    path: '',
-    component: HomeComponent
-  },
-  {
-    path: 'register',
-    component: RegisterComponent
-  }
-];
 @NgModule({
   declarations: [
     AppComponent,
     HeaderComponent,
     HomeComponent,
-    RegisterComponent
+    RegisterComponent,
+    LoginComponent,
+    AddPlayerComponent,
+    UpdatePlayerComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
     MatToolbarModule,
-    RouterModule.forRoot(routes),
     MatIconModule,
     MatTableModule,
     MatIconModule,
@@ -47,7 +44,9 @@ const routes = [
     MatFormFieldModule,
     MatIconModule,
     MatInputModule,
-    MatButtonModule
+    MatButtonModule,
+    FormsModule,
+    HttpClientModule
   ] ,
   providers: [],
   bootstrap: [AppComponent]

@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { AuthenticationService } from '../authentication.service';
+import { Router } from '@angular/router';
 
 export interface PeriodicElement {
   name: string;
@@ -28,10 +30,27 @@ const ELEMENT_DATA: PeriodicElement[] = [
 
 export class HomeComponent implements OnInit {
 
-  displayedColumns: string[] = ['position', 'name', 'weight', 'symbol'];
+  displayedColumns: string[] = ['No', 'name', 'age', 'average', 'edit/delete'] ;
   dataSource = ELEMENT_DATA;
-  constructor() { }
+  tableData: any;
+  constructor(private serv: AuthenticationService , private router: Router) { }
 
   ngOnInit(): void {
+    this.serv.GetPlayers().subscribe(data => {
+      console.log(data);
+      this.tableData = data ;
+    });
+  }
+
+  AddPlayer() {
+    this.router.navigateByUrl('addplayer');
+  }
+
+  UpdatePlayer(element) {
+    console.log(element);
+  }
+
+  DeletePlayer(element) {
+
   }
 }

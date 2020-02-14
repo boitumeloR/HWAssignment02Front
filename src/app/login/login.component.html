@@ -1,0 +1,27 @@
+<app-header></app-header>
+<h1>Login</h1>
+<div class="parent">
+    <div class="child">
+        <form (submit) = "Logon(e)">
+            <mat-form-field appearance="outline">
+                <mat-label>Username / Email</mat-label>
+                <input matInput placeholder="Email Address" class="email">
+                <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
+                <mat-hint></mat-hint>
+            </mat-form-field>
+            <br>
+            <mat-form-field appearance="outline">
+                <mat-label>Password</mat-label>
+                <input matInput placeholder="Password" type="password" class="password">
+                <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
+                <mat-hint></mat-hint>
+            </mat-form-field>
+            
+            <br>
+            <button mat-raised-button color="primary" type="submit" >Login</button>
+            <br>
+            <a mat-stroked-button routerLink="/register">Dont have an account? Register.</a>
+        </form>
+    </div>
+</div>
+
