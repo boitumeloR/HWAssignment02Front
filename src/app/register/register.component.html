@@ -1,22 +1,35 @@
 <app-header></app-header>
 <h1>Register</h1>
+
 <div class="parent">
     <div class="child">
-        <mat-form-field appearance="outline">
-            <mat-label>Username / Email</mat-label>
-            <input matInput placeholder="Email Address" class="email">
-            <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
-            <mat-hint></mat-hint>
-        </mat-form-field>
-        <br>
-        <mat-form-field appearance="outline">
-            <mat-label>Password</mat-label>
-            <input matInput placeholder="Password" type="password" class="password">
-            <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
-            <mat-hint></mat-hint>
-        </mat-form-field>
-        
-        <br>
-        <button mat-raised-button color="primary">Register</button>
+        <form (submit)="RegisterUser($event)">
+            <mat-form-field appearance="outline">
+                <mat-label>Username / Email</mat-label>
+                <input matInput placeholder="Email Address" class="email">
+                <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
+                <mat-hint></mat-hint>
+            </mat-form-field>
+            <br>
+            <mat-form-field appearance="outline">
+                <mat-label>Password</mat-label>
+                <input matInput placeholder="Password" type="password" class="password">
+                <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
+                <mat-hint></mat-hint>
+            </mat-form-field>
+            <br>
+            <mat-form-field>
+                <mat-label>User Type</mat-label>
+                <mat-select id="usertype" [(ngModel)]="selected">
+                    <mat-option MatInput *ngFor="let type of usertypes" [value]="type.UserTypeID" >
+                        {{type.Description}}
+                    </mat-option>
+                </mat-select>
+            </mat-form-field>
+            <p>You selected: {{selected}}</p>
+            <br>
+            <button mat-raised-button color="primary" type="submit">Register</button>
+        </form>
+
     </div>
 </div>

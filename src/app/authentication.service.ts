@@ -12,4 +12,9 @@ export class AuthenticationService {
     const path = 'api/League/GetPlayers';
     return this.http.get(this.server + path );
   }
+
+  GetUserTypes() {
+    const path = 'api/League/GetUserTypes';
+    return this.http.get(this.server + path);
+  }
 }
