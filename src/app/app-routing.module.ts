@@ -11,7 +11,7 @@ import { AddPlayerComponent } from './add-player/add-player.component';
 const routes: Routes = [
   {
     path: '',
-    component: HomeComponent
+    component: LoginComponent
   },
   {
     path: 'register',
@@ -24,6 +24,10 @@ const routes: Routes = [
   {
     path: 'addplayer',
     component: AddPlayerComponent
+  },
+  {
+    path: 'home',
+    component: HomeComponent
   }
 ];
 

@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthenticationService } from '../authentication.service';
+import { Router } from '@angular/router';
 
 
 @Component({
@@ -10,8 +11,9 @@ import { AuthenticationService } from '../authentication.service';
 export class RegisterComponent implements OnInit {
 
   usertypes: any;
-  selected: number;
-  constructor(private authserv: AuthenticationService) { }
+  selected = 0;
+  regError: string;
+  constructor(private authserv: AuthenticationService, private router: Router) { }
 
   ngOnInit(): void {
     this.authserv.GetUserTypes().subscribe(data => {
@@ -20,18 +22,26 @@ export class RegisterComponent implements OnInit {
   }
 
   RegisterUser(e) {
+
+    console.log('im here');
     const target = e.target;
 
     const username = target.querySelector('.email').value;
     const password = target.querySelector('.password').value;
-    const userTypeID = target.querySelector('#usertype');
-
+    const userTypeID = this.selected;
     const authBody = {
       username,
       password,
       userTypeID
     };
-    console.log(this.selected);
+    this.authserv.RegisterUser(authBody).subscribe(data => {
+      if (data.Error === null) {
+        this.authserv.userSession = data;
+        this.router.navigateByUrl('home');
+      } else {
+        this.regError = data.Error;
+      }
+    });
   }
 
 }

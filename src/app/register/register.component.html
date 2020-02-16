@@ -20,13 +20,13 @@
             <br>
             <mat-form-field>
                 <mat-label>User Type</mat-label>
-                <mat-select id="usertype" [(ngModel)]="selected">
-                    <mat-option MatInput *ngFor="let type of usertypes" [value]="type.UserTypeID" >
+                <mat-select id="usertype" [(value)]="selected" required>
+                    <mat-option MatInput *ngFor="let type of usertypes" [value]="type.UserRoleID"  >
                         {{type.Description}}
                     </mat-option>
                 </mat-select>
             </mat-form-field>
-            <p>You selected: {{selected}}</p>
+            <p>{{regError}}</p>
             <br>
             <button mat-raised-button color="primary" type="submit">Register</button>
         </form>
