@@ -1,30 +1,48 @@
-<app-header></app-header>
 
-<h1>Add A Player</h1>
+<h1>Add Player</h1>
 
 <div class="parent">
     <div class="child">
-        <mat-form-field appearance="outline">
-            <mat-label>Player Name</mat-label>
-            <input matInput placeholder="Player Name" class="email" required type="text">
-            <mat-icon matSuffix></mat-icon>
-            <mat-hint></mat-hint>
-        </mat-form-field>
-        <br>
-        <mat-form-field appearance="outline">
-            <mat-label>Player Surname</mat-label>
-            <input matInput placeholder="Player Surname" class="email" required type="text">
-            <mat-icon matSuffix></mat-icon>
-            <mat-hint></mat-hint>
-        </mat-form-field>
-        <br>
-        <mat-form-field appearance="outline">
-            <mat-label>Password</mat-label>
-            <input matInput placeholder="Password" type="password" class="password">
-            <mat-icon matSuffix></mat-icon>
-            <mat-hint></mat-hint>
-        </mat-form-field>
-        <br>
-        <button mat-raised-button color="primary">Login</button>
+        <form (submit)="AddPlayer($event)">
+            <mat-form-field appearance="outline">
+                <mat-label>Player Name</mat-label>
+                <input matInput placeholder="Player Name" class="name" required type="text" >
+                <mat-icon matSuffix></mat-icon>
+                <mat-hint></mat-hint>
+            </mat-form-field>
+            <br>
+            <mat-form-field appearance="outline">
+                <mat-label>Player Surname</mat-label>
+                <input matInput placeholder="Player Surname" class="surname" required type="text" >
+                <mat-icon matSuffix></mat-icon>
+                <mat-hint></mat-hint>
+            </mat-form-field>
+            <br>
+            <mat-form-field appearance="outline">
+                <mat-label>Player Age</mat-label>
+                <input matInput placeholder="Player Age" class="age" required type="number" >
+                <mat-icon matSuffix></mat-icon>
+                <mat-hint></mat-hint>
+            </mat-form-field>
+            <br>
+            <mat-form-field appearance="outline">
+                <mat-label>Player Average</mat-label>
+                <input matInput placeholder="Player Average" class="average" required type="number" step="0.01">
+                <mat-icon matSuffix></mat-icon>
+                <mat-hint></mat-hint>
+            </mat-form-field>
+            <br>
+            <mat-form-field>
+                <mat-label>Team</mat-label>
+                <mat-select id="usertype" [(value)]="selectedTeam" required>
+                    <mat-option MatInput *ngFor="let team of TeamList" [value]="team.TeamID"  >
+                        {{team.TeamName}}
+                    </mat-option>
+                </mat-select>
+            </mat-form-field>
+            <br>
+            <p>{{addError}}</p>
+            <button mat-raised-button color="primary" type="submit">Update</button>
+        </form>
     </div>
 </div>

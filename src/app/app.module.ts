@@ -21,6 +21,8 @@ import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { AddPlayerComponent } from './add-player/add-player.component';
 import { UpdatePlayerComponent } from './update-player/update-player.component';
+import {MatSelectModule} from '@angular/material/select';
+import {CookieService} from 'ngx-cookie-service';
 
 @NgModule({
   declarations: [
@@ -46,9 +48,10 @@ import { UpdatePlayerComponent } from './update-player/update-player.component';
     MatInputModule,
     MatButtonModule,
     FormsModule,
-    HttpClientModule
+    HttpClientModule,
+    MatSelectModule
   ] ,
-  providers: [],
+  providers: [CookieService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
