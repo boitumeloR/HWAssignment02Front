@@ -8,6 +8,8 @@ import { LoginComponent } from './login/login.component';
 import { AddPlayerComponent } from './add-player/add-player.component';
 import { AuthGuardGuard } from './guards/auth-guard.guard';
 import { UpdatePlayerComponent } from './update-player/update-player.component';
+import { ViewTeamComponent } from './view-team/view-team.component';
+import { AdminGuard } from './guards/admin.guard';
 
 
 const routes: Routes = [
@@ -39,6 +41,11 @@ const routes: Routes = [
   {
     path: 'addplayer',
     component: AddPlayerComponent
+  },
+  {
+    path: 'viewteam',
+    component: ViewTeamComponent,
+    canActivate: [AdminGuard]
   }
 ];
 

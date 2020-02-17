@@ -27,6 +27,7 @@ export class LoginComponent implements OnInit {
         password,
         UserTypeID: null
       };
+
       this.authserv.Login(this.loginBody).subscribe(data => {
         if (data.Error !== null) {
           this.cookie.set('session', JSON.stringify(data));
@@ -37,6 +38,8 @@ export class LoginComponent implements OnInit {
           this.cookie.set('session', JSON.stringify(data));
           if (data.Type === 2) {
             this.router.navigate(['home']);
+          } else if (data.Type === 1) {
+            this.router.navigate(['viewteam']);
           }
         }
       });

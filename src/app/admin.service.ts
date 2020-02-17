@@ -6,4 +6,12 @@ import { Injectable } from '@angular/core';
 export class AdminService {
 
   constructor() { }
+
+  GetTeams() {
+
+  }
+
+  DeleteTeam(team) {
+
+  }
 }
