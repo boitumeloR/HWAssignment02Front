@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { AuthenticationService } from '../authentication.service';
+import { Router } from '@angular/router';
+import { CookieService } from 'ngx-cookie-service';
 
 @Component({
   selector: 'app-login',
@@ -8,7 +11,8 @@ import { Component, OnInit } from '@angular/core';
 export class LoginComponent implements OnInit {
 
   loginBody: object;
-  constructor() { }
+  error: string;
+  constructor(private authserv: AuthenticationService, private router: Router, private cookie: CookieService ) { }
 
   ngOnInit(): void {
   }
@@ -20,8 +24,22 @@ export class LoginComponent implements OnInit {
 
       this.loginBody = {
         username,
-        password
+        password,
+        UserTypeID: null
       };
+      this.authserv.Login(this.loginBody).subscribe(data => {
+        if (data.Error !== null) {
+          this.cookie.set('session', JSON.stringify(data));
+          this.error = data.Error;
+        } else if (data.Error === null) {
+          this.authserv.userSession = data;
+          const now = new Date();
+          this.cookie.set('session', JSON.stringify(data));
+          if (data.Type === 2) {
+            this.router.navigate(['home']);
+          }
+        }
+      });
     }
 
 }

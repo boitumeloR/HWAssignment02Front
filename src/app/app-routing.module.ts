@@ -6,6 +6,8 @@ import { HeaderComponent } from './header/header.component';
 import { RegisterComponent } from './register/register.component';
 import { LoginComponent } from './login/login.component';
 import { AddPlayerComponent } from './add-player/add-player.component';
+import { AuthGuardGuard } from './guards/auth-guard.guard';
+import { UpdatePlayerComponent } from './update-player/update-player.component';
 
 
 const routes: Routes = [
@@ -27,7 +29,16 @@ const routes: Routes = [
   },
   {
     path: 'home',
-    component: HomeComponent
+    component: HomeComponent,
+    canActivate: [AuthGuardGuard]
+  },
+  {
+    path: 'updateplayer',
+    component: UpdatePlayerComponent
+  },
+  {
+    path: 'addplayer',
+    component: AddPlayerComponent
   }
 ];
 

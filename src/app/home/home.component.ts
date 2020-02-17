@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthenticationService } from '../authentication.service';
 import { Router } from '@angular/router';
+import { CookieService } from 'ngx-cookie-service';
 
 export interface PeriodicElement {
   name: string;
@@ -33,12 +34,12 @@ export class HomeComponent implements OnInit {
   displayedColumns: string[] = ['No', 'name', 'age', 'average', 'edit/delete'] ;
   dataSource = ELEMENT_DATA;
   tableData: any;
-  constructor(private serv: AuthenticationService , private router: Router) { }
+  constructor(private serv: AuthenticationService , private router: Router, private cookie: CookieService) { }
 
   ngOnInit(): void {
     this.serv.GetPlayers().subscribe(data => {
-      console.log(data);
-      this.tableData = data ;
+      this.cookie.set('session', JSON.stringify(data.Session));
+      this.tableData = data.Players;
     });
   }
 
@@ -47,10 +48,14 @@ export class HomeComponent implements OnInit {
   }
 
   UpdatePlayer(element) {
-    console.log(element);
+    localStorage.setItem('UpdatePlayer', JSON.stringify(element));
+    this.router.navigate(['updateplayer']);
   }
 
   DeletePlayer(element) {
-    
+    this.serv.DeletePlayer(element).subscribe(data => {
+      this.cookie.set('session', JSON.stringify(data));
+      location.reload();
+    });
   }
 }

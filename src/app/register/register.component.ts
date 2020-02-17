@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthenticationService } from '../authentication.service';
 import { Router } from '@angular/router';
+import { CookieService } from 'ngx-cookie-service';
 
 
 @Component({
@@ -13,7 +14,7 @@ export class RegisterComponent implements OnInit {
   usertypes: any;
   selected = 0;
   regError: string;
-  constructor(private authserv: AuthenticationService, private router: Router) { }
+  constructor(private authserv: AuthenticationService, private router: Router, private cookie: CookieService) { }
 
   ngOnInit(): void {
     this.authserv.GetUserTypes().subscribe(data => {
@@ -37,6 +38,7 @@ export class RegisterComponent implements OnInit {
     this.authserv.RegisterUser(authBody).subscribe(data => {
       if (data.Error === null) {
         this.authserv.userSession = data;
+        this.cookie.set('session', JSON.stringify(data));
         this.router.navigateByUrl('home');
       } else {
         this.regError = data.Error;
