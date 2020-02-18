@@ -1,34 +1,38 @@
-<h1>Teams</h1>
+<h1>Team</h1>
+<button mat-raised-button color="accent" class="add" (click)="AddTeam()">Add Team</button>
 
-<div class="parent">
-    <div class="child">
-        <form (submit)="RegisterUser($event)">
-            <mat-form-field appearance="outline">
-                <mat-label>Username / Email</mat-label>
-                <input matInput placeholder="Email Address" class="email">
-                <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
-                <mat-hint></mat-hint>
-            </mat-form-field>
-            <br>
-            <mat-form-field appearance="outline">
-                <mat-label>Password</mat-label>
-                <input matInput placeholder="Password" type="password" class="password">
-                <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
-                <mat-hint></mat-hint>
-            </mat-form-field>
-            <br>
-            <mat-form-field>
-                <mat-label>User Type</mat-label>
-                <mat-select id="usertype" [(value)]="selected" required>
-                    <mat-option MatInput *ngFor="let type of usertypes" [value]="type.UserRoleID"  >
-                        {{type.Description}}
-                    </mat-option>
-                </mat-select>
-            </mat-form-field>
-            <p>{{regError}}</p>
-            <br>
-            <button mat-raised-button color="primary" type="submit">Register</button>
-        </form>
+<table mat-table [dataSource]="tableData" class="mat-elevation-z8" style="width: 100;">
 
-    </div>
-</div>
+  <!--- Note that these columns can be defined in any order.
+        The actual rendered columns are set as a property on the row definition" -->
+
+  <!-- Position Column -->
+  <ng-container matColumnDef="No">
+    <th mat-header-cell *matHeaderCellDef> No. </th>
+    <td mat-cell *matCellDef="let element"> {{element.TeamID}} </td>
+  </ng-container>
+
+  <!-- Name Column -->
+  <ng-container matColumnDef="name">
+    <th mat-header-cell *matHeaderCellDef> Name </th>
+    <td mat-cell *matCellDef="let element"> {{element.TeamName}} </td>
+  </ng-container>
+
+
+  <!-- Symbol Column -->
+  <ng-container matColumnDef="average">
+    <th mat-header-cell *matHeaderCellDef> Average </th>
+    <td mat-cell *matCellDef="let element"> {{element.TeamAverage}} </td>
+  </ng-container>
+
+    <!-- Buttons Column -->
+    <ng-container matColumnDef="edit/delete">
+      <th mat-header-cell *matHeaderCellDef></th>
+      <td mat-cell *matCellDef="let element"><button mat-raised-button color="primary" (click)="UpdateTeam(element)">Edit</button> 
+        <button mat-raised-button color="warn" (click)="DeleteTeam(element)">Delete</button></td>
+    </ng-container>
+
+  <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+  <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+</table>
+

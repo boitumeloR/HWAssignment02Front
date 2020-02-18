@@ -13,12 +13,13 @@ import { AdminService } from '../admin.service';
 export class ViewTeamComponent implements OnInit {
 
   tableData: any;
+  displayedColumns: string[] = ['No', 'name', 'average', 'edit/delete'];
   constructor(private serv: AdminService , private router: Router, private cookie: CookieService) { }
 
   ngOnInit(): void {
     this.serv.GetTeams().subscribe(data => {
       this.cookie.set('session', JSON.stringify(data.Session));
-      this.tableData = data.Players;
+      this.tableData = data.Teams;
     });
   }
 
@@ -26,12 +27,12 @@ export class ViewTeamComponent implements OnInit {
     this.router.navigateByUrl('addplayer');
   }
 
-  UpdatePlayer(element) {
+  UpdateTeam(element) {
     localStorage.setItem('UpdatePlayer', JSON.stringify(element));
     this.router.navigate(['updateplayer']);
   }
 
-  DeletePlayer(element) {
+  DeleteTeam(element) {
     this.serv.DeleteTeam(element).subscribe(data => {
       this.cookie.set('session', JSON.stringify(data));
       location.reload();
