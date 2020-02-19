@@ -24,12 +24,12 @@ export class ViewTeamComponent implements OnInit {
   }
 
   AddTeam() {
-    this.router.navigateByUrl('addplayer');
+    this.router.navigateByUrl('addteam');
   }
 
   UpdateTeam(element) {
-    localStorage.setItem('UpdatePlayer', JSON.stringify(element));
-    this.router.navigate(['updateplayer']);
+    localStorage.setItem('UpdateTeam', JSON.stringify(element));
+    this.router.navigate(['updateteam']);
   }
 
   DeleteTeam(element) {

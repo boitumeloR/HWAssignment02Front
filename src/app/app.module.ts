@@ -24,6 +24,9 @@ import { UpdatePlayerComponent } from './update-player/update-player.component';
 import {MatSelectModule} from '@angular/material/select';
 import {CookieService} from 'ngx-cookie-service';
 import { ViewTeamComponent } from './view-team/view-team.component';
+import { AddTeamComponent } from './add-team/add-team.component';
+import { UpdateTeamComponent } from './update-team/update-team.component';
+import { ViewLeagueComponent } from './view-league/view-league.component';
 
 @NgModule({
   declarations: [
@@ -34,7 +37,10 @@ import { ViewTeamComponent } from './view-team/view-team.component';
     LoginComponent,
     AddPlayerComponent,
     UpdatePlayerComponent,
-    ViewTeamComponent
+    ViewTeamComponent,
+    AddTeamComponent,
+    UpdateTeamComponent,
+    ViewLeagueComponent
   ],
   imports: [
     BrowserModule,

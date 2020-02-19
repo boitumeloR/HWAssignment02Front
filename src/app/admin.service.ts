@@ -1,8 +1,18 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { CookieService } from 'ngx-cookie-service';
-import { Session } from 'inspector';
 
+export interface Session {
+  UserID: string;
+  SessionID: string;
+  Type: number;
+  Error: string;
+}
+
+export interface Leagues {
+  Session: any;
+  Leagues: any;
+}
 export interface Teams {
   Session: Session ;
   Teams: any;
@@ -28,11 +38,41 @@ export class AdminService {
 
   DeleteTeam(team) {
     const sess = JSON.parse(this.cookie.get('session'));
-    const path = 'api/League/DeleteTeam'
+    const path = 'api/League/DeleteTeam';
     const bod = {
       Team: team,
       Session: sess
     };
+    return this.http.post<Session>(this.server + path, bod, this.httpOptions);
+  }
+
+   AddTeam(team) {
+    const sess = JSON.parse(this.cookie.get('session'));
+    const path = 'api/League/AddTeam';
+
+    const bod = {
+      Team: team,
+      Session: sess
+    };
+    return this.http.post<Session>(this.server + path, bod, this.httpOptions);
+  }
+
+  GetSecureLeagues() {
+    const path = 'api/League/GetSecureLeague';
+    const session  = this.cookie.get('session');
+
+    return this.http.post<Leagues>(this.server + path, session, this.httpOptions);
+  }
+
+  UpdateTeam(team) {
+    const path = 'api/League/UpdateTeam';
+    const session = JSON.parse(this.cookie.get('session'));
+
+    const bod = {
+      team,
+      session
+    };
+
     return this.http.post<Session>(this.server + path, bod, this.httpOptions);
   }
 }

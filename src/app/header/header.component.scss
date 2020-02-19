@@ -3,6 +3,24 @@ h1{
 }
 
 a{
-    background-color: rgba(55, 182, 255,0.15);
+    background-color: rgba(55, 182, 255,0.35);
     margin-left: 10px;
+}
+
+.buttons{
+    text-align: center;
+    margin-left: 60%;
+
+    @media screen and (max-width: 1098px) {
+        margin-left: 60%;
+        display: none;
+    }
+}
+
+.head{
+    width: 100%;
+
+    @media screen and (max-width: 768px) {
+        width: 100%;
+    }
 }
