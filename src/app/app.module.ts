@@ -27,6 +27,9 @@ import { ViewTeamComponent } from './view-team/view-team.component';
 import { AddTeamComponent } from './add-team/add-team.component';
 import { UpdateTeamComponent } from './update-team/update-team.component';
 import { ViewLeagueComponent } from './view-league/view-league.component';
+import { AddLeagueComponent } from './add-league/add-league.component';
+import { UpdateLeagueComponent } from './update-league/update-league.component';
+import { ViewUserTypeComponent } from './view-user-type/view-user-type.component';
 
 @NgModule({
   declarations: [
@@ -40,7 +43,10 @@ import { ViewLeagueComponent } from './view-league/view-league.component';
     ViewTeamComponent,
     AddTeamComponent,
     UpdateTeamComponent,
-    ViewLeagueComponent
+    ViewLeagueComponent,
+    AddLeagueComponent,
+    UpdateLeagueComponent,
+    ViewUserTypeComponent
   ],
   imports: [
     BrowserModule,

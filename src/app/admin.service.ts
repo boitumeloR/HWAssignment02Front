@@ -75,4 +75,28 @@ export class AdminService {
 
     return this.http.post<Session>(this.server + path, bod, this.httpOptions);
   }
+
+  AddLeague(league) {
+    const session = JSON.parse(this.cookie.get('session'));
+    const path = 'api/League/AddLeague';
+
+    const bod = {
+      league,
+      session
+    };
+
+    return this.http.post<Session>(this.server + path, bod, this.httpOptions);
+  }
+
+  UpdateLeague(league) {
+    const path = 'api/League/UpdateLeague';
+    const session = JSON.parse(this.cookie.get('session'));
+
+    const bod = {
+      league,
+      session
+    };
+
+    return this.http.post<Session>(this.server + path, bod, this.httpOptions);
+  }
 }

@@ -9,10 +9,10 @@ a{
 
 .buttons{
     text-align: center;
-    margin-left: 60%;
+    margin-left: 50%;
 
-    @media screen and (max-width: 1098px) {
-        margin-left: 60%;
+    @media screen and (max-width: 1198px) {
+        margin-left: 50%;
         display: none;
     }
 }

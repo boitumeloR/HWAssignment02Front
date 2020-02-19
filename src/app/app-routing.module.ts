@@ -12,6 +12,9 @@ import { ViewTeamComponent } from './view-team/view-team.component';
 import { AdminGuard } from './guards/admin.guard';
 import { AddTeamComponent } from './add-team/add-team.component';
 import { UpdateTeamComponent } from './update-team/update-team.component';
+import { ViewLeagueComponent } from './view-league/view-league.component';
+import { AddLeagueComponent } from './add-league/add-league.component';
+import { UpdateLeagueComponent } from './update-league/update-league.component';
 
 
 const routes: Routes = [
@@ -56,6 +59,19 @@ const routes: Routes = [
   {
     path: 'updateteam',
     component: UpdateTeamComponent
+  },
+  {
+    path: 'viewleague',
+    component: ViewLeagueComponent,
+    canActivate: [AdminGuard]
+  },
+  {
+    path: 'addleague',
+    component: AddLeagueComponent
+  },
+  {
+    path: 'updateleague',
+    component: UpdateLeagueComponent
   }
 ];
 

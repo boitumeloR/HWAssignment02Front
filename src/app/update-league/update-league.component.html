@@ -1,0 +1,24 @@
+<h1>Update League</h1>
+
+<div class="parent">
+    <div class="child">
+        <form (submit)="UpdateLeague($event)">
+            <mat-form-field appearance="outline">
+                <mat-label>League Name</mat-label>
+                <input matInput placeholder="League Name" class="name" required type="text" value="{{currentLeague.LeagueName}}">
+                <mat-icon matSuffix></mat-icon>
+                <mat-hint></mat-hint>
+            </mat-form-field>
+            <br>
+            <mat-form-field appearance="outline">
+                <mat-label>League Level</mat-label>
+                <input matInput placeholder="League Level" class="average" required type="number" value="{{currentLeague.LeagueLevel}}">
+                <mat-icon matSuffix></mat-icon>
+                <mat-hint></mat-hint>
+            </mat-form-field>
+            <br>
+            <p>{{updateError}}</p>
+            <button mat-raised-button color="primary" type="submit">Update</button>
+        </form>
+    </div>
+</div>

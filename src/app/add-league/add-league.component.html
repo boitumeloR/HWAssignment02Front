@@ -1,0 +1,24 @@
+<h1>Add League</h1>
+
+<div class="parent">
+    <div class="child">
+        <form (submit)="AddLeague($event)">
+            <mat-form-field appearance="outline">
+                <mat-label>League Name</mat-label>
+                <input matInput placeholder="Team Name" class="name" required type="text" >
+                <mat-icon matSuffix></mat-icon>
+                <mat-hint></mat-hint>
+            </mat-form-field>
+            <br>
+            <mat-form-field appearance="outline">
+                <mat-label>League Level</mat-label>
+                <input matInput placeholder="Team Average" class="average" required type="number">
+                <mat-icon matSuffix></mat-icon>
+                <mat-hint></mat-hint>
+            </mat-form-field>
+            <br>
+            <p>{{addError}}</p>
+            <button mat-raised-button color="primary" type="submit">Update</button>
+        </form>
+    </div>
+</div>
