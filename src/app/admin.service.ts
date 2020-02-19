@@ -2,6 +2,10 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { CookieService } from 'ngx-cookie-service';
 
+export interface UserType {
+  Session: Session;
+  UserTypes: any;
+}
 export interface Session {
   UserID: string;
   SessionID: string;
@@ -99,4 +103,47 @@ export class AdminService {
 
     return this.http.post<Session>(this.server + path, bod, this.httpOptions);
   }
+
+  GetUserTypes() {
+    const path = 'api/League/GetUserTypes';
+    const session  = this.cookie.get('session');
+
+    return this.http.post<UserType>(this.server + path, session, this.httpOptions);
+  }
+
+  AddUserType(usertype) {
+    const session = JSON.parse(this.cookie.get('session'));
+    const path = 'api/League/AddUserType';
+
+    const bod = {
+      usertype,
+      session
+    };
+
+    return this.http.post<Session>(this.server + path, bod, this.httpOptions);
+  }
+
+  UpdateUserType(usertype) {
+    const path = 'api/League/UpdateUserType';
+    const session = JSON.parse(this.cookie.get('session'));
+
+    const bod = {
+      usertype,
+      session
+    };
+
+    return this.http.post<Session>(this.server + path, bod, this.httpOptions);
+  }
+
+  DeleteUserType(usertype) {
+    const sess = JSON.parse(this.cookie.get('session'));
+    const path = 'api/League/DeleteUserType';
+    const bod = {
+      Team: usertype,
+      Session: sess
+    };
+    return this.http.post<Session>(this.server + path, bod, this.httpOptions);
+  }
+
+
 }

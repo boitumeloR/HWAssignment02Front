@@ -1,0 +1,17 @@
+<h1>Update User Type</h1>
+
+<div class="parent">
+    <div class="child">
+        <form (submit)="UpdateUserType($event)">
+            <mat-form-field appearance="outline">
+                <mat-label>League Name</mat-label>
+                <input matInput placeholder="League Name" class="name" required type="text" value="{{currentUserType.UserTypeDescription}}">
+                <mat-icon matSuffix></mat-icon>
+                <mat-hint></mat-hint>
+            </mat-form-field>
+            <br>
+            <p>{{updateError}}</p>
+            <button mat-raised-button color="primary" type="submit">Update</button>
+        </form>
+    </div>
+</div>
