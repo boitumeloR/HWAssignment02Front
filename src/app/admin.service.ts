@@ -1,10 +1,16 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { CookieService } from 'ngx-cookie-service';
+import { Observable } from 'rxjs';
 
 export interface UserType {
   Session: Session;
   UserTypes: any;
+}
+
+export interface SecureUser {
+  Session: Session;
+  User: any;
 }
 export interface Session {
   UserID: string;
@@ -145,5 +151,10 @@ export class AdminService {
     return this.http.post<Session>(this.server + path, bod, this.httpOptions);
   }
 
+  GetUser(): Observable<SecureUser> {
+    const sess = JSON.parse(this.cookie.get('session'));
+    const path = 'api/Auth/GetUser';
 
+    return this.http.post<SecureUser>(this.server + path, sess, this.httpOptions);
+  }
 }

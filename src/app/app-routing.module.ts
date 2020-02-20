@@ -19,6 +19,7 @@ import { ViewUserTypeComponent } from './view-user-type/view-user-type.component
 import { AddUserTypeComponent } from './add-user-type/add-user-type.component';
 import { UpdateUserTypeComponent } from './update-user-type/update-user-type.component';
 import { LogoutComponent } from './logout/logout.component';
+import { ViewUserComponent } from './view-user/view-user.component';
 
 
 const routes: Routes = [
@@ -92,6 +93,10 @@ const routes: Routes = [
   {
     path: 'logout',
     component: LogoutComponent
+  },
+  {
+    path: 'viewuser',
+    component: ViewUserComponent
   }
 ];
 

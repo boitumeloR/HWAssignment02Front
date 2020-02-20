@@ -1,0 +1,33 @@
+table{
+    width: 100%;
+}
+
+h1{
+    margin-top: 30px;
+    font-size: 40px;
+}
+
+button{
+    margin-top: 15px;
+}
+
+$back-col: rgba(197, 197, 197, 0.2);
+
+.parent{
+    text-align: center;
+    margin: 70px;
+}
+
+.child{
+    display: inline-block;
+    background-color: $back-col;
+    padding: 30px;
+    border-radius: 6px;
+}
+
+h1{
+    text-align: center;
+    font-size: 40px;
+    margin-top: 50px;
+    margin-bottom: 30px;
+}
