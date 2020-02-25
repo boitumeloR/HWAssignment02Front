@@ -17,6 +17,16 @@ a{
     }
 }
 
+.clientbuttons{
+    text-align: center;
+    margin-left: 60%;
+
+    @media screen and (max-width: 1198px) {
+        margin-left: 50%;
+        display: none;
+    }
+}
+
 .head{
     width: 100%;
 

@@ -2,19 +2,24 @@
     <mat-toolbar color="primary"> 
         <h1>Homework Assignment 02</h1>
         <span class="example-spacer"></span>
-        <div *ngIf="usertype === 1" class="buttons">
-            <a mat-button [routerLink]="[ '/viewuser' ]"> Your Details </a>
-            <a mat-button [routerLink]="[ '/viewusertype' ]"> User Types </a>
-            <a mat-button [routerLink]="[ '/home' ]"> Players </a>
-            <a mat-button [routerLink]="[ '/viewteam' ]"> Teams </a>
-            <a mat-button [routerLink]="[ '/viewleague' ]"> Leagues </a>
-            <a mat-button [routerLink]="[ '/logout' ]"> Logout </a>
-        </div>
-        <div class="buttons" *ngIf="usertype === 1">
-            <a mat-button [routerLink]="[ '/logout' ]"> Logout </a>
-            <a mat-button [routerLink]="[ '/viewuser' ]"> Your Details </a>
-        </div>
-        
+        <ng-container *ngIf="usertype===1; then thenTemplate; else elseTemplate"></ng-container>
+        <ng-template #thenTemplate>
+            <div class="buttons">
+                <a mat-button [routerLink]="[ '/viewuser' ]"> Your Details </a>
+                <a mat-button [routerLink]="[ '/viewusertype' ]"> User Types </a>
+                <a mat-button [routerLink]="[ '/home' ]"> Players </a>
+                <a mat-button [routerLink]="[ '/viewteam' ]"> Teams </a>
+                <a mat-button [routerLink]="[ '/viewleague' ]"> Leagues </a>
+                <a mat-button [routerLink]="[ '/logout' ]"> Logout </a>
+            </div>
+        </ng-template>
+        <ng-template #elseTemplate>
+            <div class="clientbuttons" *ngIf="usertype===2">
+                <a mat-button [routerLink]="[ '/logout' ]"> Logout </a>
+                <a mat-button [routerLink]="[ '/viewuser' ]"> Your Details </a>
+                <a mat-button [routerLink]="[ '/home' ]"> Players </a>
+            </div>
+        </ng-template>
     </mat-toolbar>
 </div>
 

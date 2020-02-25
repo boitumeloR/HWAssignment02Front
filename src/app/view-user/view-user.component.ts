@@ -22,8 +22,9 @@ export class ViewUserComponent implements OnInit {
     });
   }
 
+
   UpdateUser(element) {
-    localStorage.setItem('UpdateUser', JSON.stringify(element));
+    // localStorage.setItem('UpdateUser', JSON.stringify(element));
     this.router.navigate(['updateuser']);
   }
 }

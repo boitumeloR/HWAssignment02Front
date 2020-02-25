@@ -157,4 +157,16 @@ export class AdminService {
 
     return this.http.post<SecureUser>(this.server + path, sess, this.httpOptions);
   }
+
+  UpdateUser(user): Observable<Session> {
+    const session = JSON.parse(this.cookie.get('session'));
+    const path = 'api/Auth/UpdateUser';
+
+    const bod = {
+      session,
+      user
+    };
+
+    return this.http.post<Session>(this.server + path, bod, this.httpOptions);
+  }
 }

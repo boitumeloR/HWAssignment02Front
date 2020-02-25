@@ -20,6 +20,7 @@ import { AddUserTypeComponent } from './add-user-type/add-user-type.component';
 import { UpdateUserTypeComponent } from './update-user-type/update-user-type.component';
 import { LogoutComponent } from './logout/logout.component';
 import { ViewUserComponent } from './view-user/view-user.component';
+import { UpdateUserComponent } from './update-user/update-user.component';
 
 
 const routes: Routes = [
@@ -97,11 +98,15 @@ const routes: Routes = [
   {
     path: 'viewuser',
     component: ViewUserComponent
+  },
+  {
+    path: 'updateuser',
+    component: UpdateUserComponent
   }
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes)],
+  imports: [RouterModule.forRoot(routes, {onSameUrlNavigation: 'reload'})],
   exports: [RouterModule]
 })
 export class AppRoutingModule { }

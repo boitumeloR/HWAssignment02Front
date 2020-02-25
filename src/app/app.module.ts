@@ -34,6 +34,7 @@ import { AddUserTypeComponent } from './add-user-type/add-user-type.component';
 import { UpdateUserTypeComponent } from './update-user-type/update-user-type.component';
 import { LogoutComponent } from './logout/logout.component';
 import { ViewUserComponent } from './view-user/view-user.component';
+import { UpdateUserComponent } from './update-user/update-user.component';
 
 @NgModule({
   declarations: [
@@ -54,7 +55,8 @@ import { ViewUserComponent } from './view-user/view-user.component';
     AddUserTypeComponent,
     UpdateUserTypeComponent,
     LogoutComponent,
-    ViewUserComponent
+    ViewUserComponent,
+    UpdateUserComponent
   ],
   imports: [
     BrowserModule,
