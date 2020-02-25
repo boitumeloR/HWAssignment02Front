@@ -38,7 +38,8 @@ const routes: Routes = [
   },
   {
     path: 'addplayer',
-    component: AddPlayerComponent
+    component: AddPlayerComponent,
+    canActivate: [AuthGuardGuard]
   },
   {
     path: 'home',
@@ -47,11 +48,13 @@ const routes: Routes = [
   },
   {
     path: 'updateplayer',
-    component: UpdatePlayerComponent
+    component: UpdatePlayerComponent,
+    canActivate: [AuthGuardGuard]
   },
   {
     path: 'addplayer',
-    component: AddPlayerComponent
+    component: AddPlayerComponent,
+    canActivate: [AuthGuardGuard]
   },
   {
     path: 'viewteam',
@@ -60,11 +63,13 @@ const routes: Routes = [
   },
   {
     path: 'addteam',
-    component: AddTeamComponent
+    component: AddTeamComponent,
+    canActivate: [AdminGuard]
   },
   {
     path: 'updateteam',
-    component: UpdateTeamComponent
+    component: UpdateTeamComponent,
+    canActivate: [AdminGuard]
   },
   {
     path: 'viewleague',
@@ -73,35 +78,42 @@ const routes: Routes = [
   },
   {
     path: 'addleague',
-    component: AddLeagueComponent
+    component: AddLeagueComponent,
+    canActivate: [AdminGuard]
   },
   {
     path: 'updateleague',
-    component: UpdateLeagueComponent
+    component: UpdateLeagueComponent,
+    canActivate: [AdminGuard]
   },
   {
     path: 'viewusertype',
-    component: ViewUserTypeComponent
+    component: ViewUserTypeComponent,
+    canActivate: [AdminGuard]
   },
   {
     path: 'addusertype',
-    component: AddUserTypeComponent
+    component: AddUserTypeComponent,
+    canActivate: [AdminGuard]
   },
   {
     path: 'updateusertype',
-    component: UpdateUserTypeComponent
+    component: UpdateUserTypeComponent,
+    canActivate: [AdminGuard]
   },
   {
     path: 'logout',
-    component: LogoutComponent
+    component: LogoutComponent,
   },
   {
     path: 'viewuser',
-    component: ViewUserComponent
+    component: ViewUserComponent,
+    canActivate: [AuthGuardGuard]
   },
   {
     path: 'updateuser',
-    component: UpdateUserComponent
+    component: UpdateUserComponent,
+    canActivate: [AuthGuardGuard]
   }
 ];
 
