@@ -1,6 +1,6 @@
 <app-header></app-header>
-<h1>Soccer Players</h1>
-<button mat-raised-button color="accent" class="add" (click)="AddPlayer()">Add Player</button>
+<h1>Team</h1>
+<button mat-raised-button color="accent" class="add" (click)="AddTeam()">Add Team</button>
 
 <table mat-table [dataSource]="tableData" class="mat-elevation-z8" style="width: 100;">
 
@@ -10,34 +10,29 @@
   <!-- Position Column -->
   <ng-container matColumnDef="No">
     <th mat-header-cell *matHeaderCellDef> No. </th>
-    <td mat-cell *matCellDef="let element"> {{element.PlayerID}} </td>
+    <td mat-cell *matCellDef="let element"> {{element.TeamID}} </td>
   </ng-container>
 
   <!-- Name Column -->
   <ng-container matColumnDef="name">
     <th mat-header-cell *matHeaderCellDef> Name </th>
-    <td mat-cell *matCellDef="let element"> {{element.PlayerName}} {{element.PlayerSurname}} </td>
+    <td mat-cell *matCellDef="let element"> {{element.TeamName}} </td>
   </ng-container>
 
-  <!-- Weight Column -->
-  <ng-container matColumnDef="age">
-    <th mat-header-cell *matHeaderCellDef> Age </th>
-    <td mat-cell *matCellDef="let element"> {{element.PlayerAge}} </td>
-  </ng-container>
 
   <!-- Symbol Column -->
   <ng-container matColumnDef="average">
     <th mat-header-cell *matHeaderCellDef> Average </th>
-    <td mat-cell *matCellDef="let element"> {{element.PlayerAverage}} </td>
+    <td mat-cell *matCellDef="let element"> {{element.TeamAverage}} </td>
   </ng-container>
 
     <!-- Buttons Column -->
     <ng-container matColumnDef="edit/delete">
       <th mat-header-cell *matHeaderCellDef></th>
-      <td mat-cell *matCellDef="let element"><button mat-raised-button color="primary" (click)="UpdatePlayer(element)">Edit</button> 
-        <button mat-raised-button color="warn" (click)="DeletePlayer(element)">Delete</button></td>
+      <td mat-cell *matCellDef="let element"><button mat-raised-button color="primary" (click)="UpdateTeam(element)">Edit</button></td>
     </ng-container>
 
   <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
   <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
 </table>
+

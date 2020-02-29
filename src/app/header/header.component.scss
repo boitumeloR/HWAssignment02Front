@@ -1,0 +1,36 @@
+h1{
+    font-size: 16px;
+}
+
+a{
+    background-color: rgba(55, 182, 255,0.35);
+    margin-left: 10px;
+}
+
+.buttons{
+    text-align: center;
+    margin-left: 40%;
+
+    @media screen and (max-width: 1198px) {
+        margin-left: 50%;
+        display: none;
+    }
+}
+
+.clientbuttons{
+    text-align: center;
+    margin-left: 60%;
+
+    @media screen and (max-width: 1198px) {
+        margin-left: 50%;
+        display: none;
+    }
+}
+
+.head{
+    width: 100%;
+
+    @media screen and (max-width: 768px) {
+        width: 100%;
+    }
+}

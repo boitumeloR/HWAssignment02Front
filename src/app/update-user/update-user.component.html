@@ -1,0 +1,39 @@
+
+<app-header></app-header>
+<h1>Update Details</h1>
+<div class="parent">
+    <div class="child">
+        <form (ngSubmit) = "UpdateUser($event)">
+            <mat-form-field appearance="outline">
+                <mat-label>Username / Email</mat-label>
+                <input matInput placeholder="Email Address" class="username" value = "{{currentUser.Username}}">
+                <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
+                <mat-hint></mat-hint>
+            </mat-form-field>
+            <br>
+            <mat-form-field appearance="outline">
+                <mat-label>Current Password</mat-label>
+                <input matInput placeholder="Current Password" type="password" class="current">
+                <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
+                <mat-hint></mat-hint>
+            </mat-form-field>
+            <br>
+            <mat-form-field appearance="outline">
+                <mat-label>New Password</mat-label>
+                <input matInput placeholder=" New Password" type="password" class="password">
+                <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
+                <mat-hint></mat-hint>
+            </mat-form-field>
+            <br>
+            <mat-form-field appearance="outline">
+                <mat-label>Confirm Password</mat-label>
+                <input matInput placeholder="Confirm New Password" type="password" class="confirm">
+                <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
+                <mat-hint></mat-hint>
+            </mat-form-field>
+            <p>{{updateError}}</p>
+            <br>
+            <button mat-raised-button color="primary" type="submit" >Update</button>
+        </form>
+    </div>
+</div>

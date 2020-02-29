@@ -23,6 +23,18 @@ import { AddPlayerComponent } from './add-player/add-player.component';
 import { UpdatePlayerComponent } from './update-player/update-player.component';
 import {MatSelectModule} from '@angular/material/select';
 import {CookieService} from 'ngx-cookie-service';
+import { ViewTeamComponent } from './view-team/view-team.component';
+import { AddTeamComponent } from './add-team/add-team.component';
+import { UpdateTeamComponent } from './update-team/update-team.component';
+import { ViewLeagueComponent } from './view-league/view-league.component';
+import { AddLeagueComponent } from './add-league/add-league.component';
+import { UpdateLeagueComponent } from './update-league/update-league.component';
+import { ViewUserTypeComponent } from './view-user-type/view-user-type.component';
+import { AddUserTypeComponent } from './add-user-type/add-user-type.component';
+import { UpdateUserTypeComponent } from './update-user-type/update-user-type.component';
+import { LogoutComponent } from './logout/logout.component';
+import { ViewUserComponent } from './view-user/view-user.component';
+import { UpdateUserComponent } from './update-user/update-user.component';
 
 @NgModule({
   declarations: [
@@ -32,7 +44,19 @@ import {CookieService} from 'ngx-cookie-service';
     RegisterComponent,
     LoginComponent,
     AddPlayerComponent,
-    UpdatePlayerComponent
+    UpdatePlayerComponent,
+    ViewTeamComponent,
+    AddTeamComponent,
+    UpdateTeamComponent,
+    ViewLeagueComponent,
+    AddLeagueComponent,
+    UpdateLeagueComponent,
+    ViewUserTypeComponent,
+    AddUserTypeComponent,
+    UpdateUserTypeComponent,
+    LogoutComponent,
+    ViewUserComponent,
+    UpdateUserComponent
   ],
   imports: [
     BrowserModule,

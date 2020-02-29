@@ -94,4 +94,10 @@ export class AuthenticationService {
 
     return this.http.post<Session>(this.server + path, user, this.httpOptions);
   }
+
+  Logout() {
+    const sess = JSON.parse(this.cookie.get('session'));
+    const path = 'api/Auth/Logout';
+    return this.http.post(this.server + path, sess, this.httpOptions);
+  }
 }
