@@ -36,6 +36,8 @@ import { LogoutComponent } from './logout/logout.component';
 import { ViewUserComponent } from './view-user/view-user.component';
 import { UpdateUserComponent } from './update-user/update-user.component';
 
+import {SmoothScrollDirective, SmoothScrollToDirective} from 'ng2-smooth-scroll';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -56,7 +58,9 @@ import { UpdateUserComponent } from './update-user/update-user.component';
     UpdateUserTypeComponent,
     LogoutComponent,
     ViewUserComponent,
-    UpdateUserComponent
+    UpdateUserComponent,
+    SmoothScrollDirective,
+    SmoothScrollToDirective
   ],
   imports: [
     BrowserModule,
