@@ -18,7 +18,7 @@ export class ViewTeamComponent implements OnInit {
 
   ngOnInit(): void {
     this.serv.GetTeams().subscribe(data => {
-      this.cookie.set('session', JSON.stringify(data.Session));
+      sessionStorage.setItem('session', JSON.stringify(data.Session));
       this.tableData = data.Teams;
     });
   }
@@ -34,7 +34,7 @@ export class ViewTeamComponent implements OnInit {
 
   DeleteTeam(element) {
     this.serv.DeleteTeam(element).subscribe(data => {
-      this.cookie.set('session', JSON.stringify(data));
+      sessionStorage.setItem('session', JSON.stringify(data));
       location.reload();
     });
   }

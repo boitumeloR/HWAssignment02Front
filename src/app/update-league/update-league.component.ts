@@ -32,7 +32,7 @@ export class UpdateLeagueComponent implements OnInit {
     };
 
     this.serv.UpdateLeague(league).subscribe(data => {
-      this.cookie.set('session', JSON.stringify(data));
+      sessionStorage.setItem('session', JSON.stringify(data));
       if (data.Error === null) {
         this.router.navigate(['viewleague']);
       } else {

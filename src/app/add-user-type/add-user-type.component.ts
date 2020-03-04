@@ -29,7 +29,7 @@ export class AddUserTypeComponent implements OnInit {
     console.log(usertype);
 
     this.serv.AddUserType(usertype).subscribe(data => {
-      this.cookie.set('session', JSON.stringify(data));
+      sessionStorage.setItem('session', JSON.stringify(data));
       if (data.Error === null) {
         this.router.navigate(['viewusertype']);
       } else {

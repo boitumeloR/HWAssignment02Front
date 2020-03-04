@@ -12,11 +12,11 @@ export class AddTeamComponent implements OnInit {
   LeagueList: any;
   selectedLeague: number;
   addError: string;
-  constructor(private serv: AdminService, private cookie: CookieService, private router: Router) { }
+  constructor(private serv: AdminService, private router: Router) { }
 
   ngOnInit(): void {
     this.serv.GetSecureLeagues().subscribe(data => {
-      this.cookie.set('session', JSON.stringify(data.Session));
+      sessionStorage.setItem('session', JSON.stringify(data.Session));
       this.LeagueList = data.Leagues;
     });
   }
@@ -36,7 +36,7 @@ export class AddTeamComponent implements OnInit {
     };
 
     this.serv.AddTeam(team).subscribe(data => {
-      this.cookie.set('session', JSON.stringify(data));
+      sessionStorage.setItem('session', JSON.stringify(data));
       if (data.Error === null) {
         this.router.navigate(['viewteam']);
       } else {

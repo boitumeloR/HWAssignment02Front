@@ -12,7 +12,7 @@ export class HeaderComponent implements OnInit {
   constructor(private cookie: CookieService) { }
 
   ngOnInit(): void {
-    const sess = JSON.parse(this.cookie.get('session'));
+    const sess = JSON.parse(sessionStorage.getItem('session'));
     this.usertype = sess.Type;
     console.log(this.usertype);
   }

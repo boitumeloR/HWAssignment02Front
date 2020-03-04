@@ -26,19 +26,18 @@ export class AuthenticationService {
       'Content-Type':  'application/json'
     })
   };
-  constructor(private http: HttpClient, private cookie: CookieService) { }
+  constructor(private http: HttpClient) { }
 
   server = 'https://localhost:44378/';
 
   GetPlayers() {
     const path = 'api/League/GetPlayers';
-    console.log(this.cookie.get('session'));
-    return this.http.post<Players>(this.server + path, this.cookie.get('session'), this.httpOptions);
+    return this.http.post<Players>(this.server + path, JSON.parse(sessionStorage.getItem('session')), this.httpOptions);
   }
 
   UpdatePlayer(player) {
     const path = 'api/League/UpdatePlayer';
-    const session = JSON.parse(this.cookie.get('session'));
+    const session = JSON.parse(sessionStorage.getItem('session'));
 
     const bod = {
       player,
@@ -50,7 +49,7 @@ export class AuthenticationService {
 
   AddPlayer(player) {
     const path = 'api/League/AddPlayer';
-    const session = JSON.parse(this.cookie.get('session'));
+    const session = JSON.parse(sessionStorage.getItem('session'));
 
     const bod = {
       player,
@@ -62,8 +61,7 @@ export class AuthenticationService {
 
   DeletePlayer(player) {
     const path = 'api/League/DeletePlayer';
-    const session = JSON.parse(this.cookie.get('session'));
-
+    const session = JSON.parse(sessionStorage.getItem('session'));
     const bod = {
       player,
       session
@@ -96,7 +94,7 @@ export class AuthenticationService {
   }
 
   Logout() {
-    const sess = JSON.parse(this.cookie.get('session'));
+    const sess = JSON.parse(sessionStorage.getItem('session'));
     const path = 'api/Auth/Logout';
     return this.http.post(this.server + path, sess, this.httpOptions);
   }

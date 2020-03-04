@@ -30,7 +30,7 @@ export class UpdateUserTypeComponent implements OnInit {
     };
 
     this.serv.UpdateUserType(league).subscribe(data => {
-      this.cookie.set('session', JSON.stringify(data));
+      sessionStorage.setItem('session', JSON.stringify(data));
       if (data.Error === null) {
         this.router.navigate(['viewusertype']);
       } else {

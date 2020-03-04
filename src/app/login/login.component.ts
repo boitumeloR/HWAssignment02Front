@@ -30,12 +30,13 @@ export class LoginComponent implements OnInit {
 
       this.authserv.Login(this.loginBody).subscribe(data => {
         if (data.Error !== null) {
-          this.cookie.set('session', JSON.stringify(data));
+          sessionStorage.setItem('session', JSON.stringify(data));
           this.error = data.Error;
         } else if (data.Error === null) {
           this.authserv.userSession = data;
           const now = new Date();
-          this.cookie.set('session', JSON.stringify(data));
+          sessionStorage.setItem('session', JSON.stringify(data));
+          console.log(data);
           if (data.Type === 2) {
             this.router.navigate(['home']);
           } else if (data.Type === 1) {

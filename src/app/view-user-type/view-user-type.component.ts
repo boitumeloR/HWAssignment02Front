@@ -16,9 +16,11 @@ export class ViewUserTypeComponent implements OnInit {
 
   ngOnInit(): void {
     this.serv.GetUserTypes().subscribe(data => {
-      this.cookie.set('session', JSON.stringify(data.Session));
+      sessionStorage.setItem('session', JSON.stringify(data.Session));
       console.log(data);
       this.tableData = data.UserTypes;
+      console.log(this.tableData);
+      
     });
   }
 

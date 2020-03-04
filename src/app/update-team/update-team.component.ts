@@ -15,13 +15,13 @@ export class UpdateTeamComponent implements OnInit {
   updateError: string;
   LeagueList: any;
 
-  constructor(private serv: AdminService, private router: Router, private cookie: CookieService) { }
+  constructor(private serv: AdminService, private router: Router) { }
 
   ngOnInit(): void {
     this.currentTeam = JSON.parse(localStorage.getItem('UpdateTeam'));
     console.log(this.currentTeam);
     this.serv.GetSecureLeagues().subscribe(data => {
-      this.cookie.set('session', JSON.stringify(data.Session));
+      sessionStorage.setItem('session', JSON.stringify(data.Session));
       this.LeagueList = data.Leagues;
     });
   }
@@ -41,7 +41,7 @@ export class UpdateTeamComponent implements OnInit {
     };
 
     this.serv.UpdateTeam(team).subscribe(data => {
-      this.cookie.set('session', JSON.stringify(data));
+      sessionStorage.setItem('session', JSON.stringify(data));
       if (data.Error === null) {
         this.router.navigate(['viewteam']);
       } else {

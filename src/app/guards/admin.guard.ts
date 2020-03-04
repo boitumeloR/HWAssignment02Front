@@ -9,11 +9,11 @@ import { Session } from 'protractor';
 })
 export class AdminGuard implements CanActivate {
 
-  constructor(private cookie: CookieService) {}
+  constructor() {}
   canActivate(
     next: ActivatedRouteSnapshot,
     state: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
-    const sess = JSON.parse(this.cookie.get('session'));
+    const sess = JSON.parse(sessionStorage.getItem('session'));
     if (sess.Type === 1) {
       return true;
     } else {

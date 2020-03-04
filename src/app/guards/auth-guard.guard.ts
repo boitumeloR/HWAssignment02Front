@@ -9,11 +9,11 @@ import { CookieService } from 'ngx-cookie-service';
 })
 export class AuthGuardGuard implements CanActivate {
   guardData: any;
-  constructor(private authserv: AuthenticationService, private router: Router, private cookie: CookieService) { }
+  constructor(private authserv: AuthenticationService, private router: Router) { }
   canActivate(
     next: ActivatedRouteSnapshot,
     state: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
-    const sess = JSON.parse(this.cookie.get('session'));
+    const sess = JSON.parse(sessionStorage.getItem('session'));
     if (sess.Error != null) {
       this.router.navigate(['login']);
       return false;
