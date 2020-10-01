@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { AuthenticationService } from '../authentication.service';
+import { AuthenticationService, UserType } from '../authentication.service';
 import { Router } from '@angular/router';
 import { CookieService } from 'ngx-cookie-service';
 
@@ -11,7 +11,7 @@ import { CookieService } from 'ngx-cookie-service';
 })
 export class RegisterComponent implements OnInit {
 
-  usertypes: any;
+  usertypes: UserType[];
   selected = 0;
   regError: string;
   constructor(private authserv: AuthenticationService, private router: Router, private cookie: CookieService) { }

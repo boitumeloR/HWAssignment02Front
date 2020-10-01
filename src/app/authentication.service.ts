@@ -15,6 +15,11 @@ export interface Session {
   Type: number;
   Error: string;
 }
+
+export interface UserType {
+  UserTypeID: number;
+  UserTypeDescription: string;
+}
 @Injectable({
   providedIn: 'root'
 })
@@ -72,7 +77,7 @@ export class AuthenticationService {
 
   GetUserTypes() {
     const path = 'api/Auth/GetUserTypes';
-    return this.http.get(this.server + path);
+    return this.http.get<UserType[]>(this.server + path);
   }
 
   GetTeams() {

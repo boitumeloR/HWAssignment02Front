@@ -168,4 +168,11 @@ export class AdminService {
 
     return this.http.post<Session>(this.server + path, bod, this.httpOptions);
   }
+
+  TestUser() {
+    const sess = JSON.parse(sessionStorage.getItem('session'));
+    const path = 'api/Auth/GetUser';
+
+    return this.http.post<SecureUser>(this.server + path, sess, this.httpOptions);
+  }
 }
