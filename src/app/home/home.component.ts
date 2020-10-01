@@ -38,6 +38,7 @@ export class HomeComponent implements OnInit {
 
   ngOnInit(): void {
     this.serv.GetPlayers().subscribe(data => {
+      console.log(data)
       sessionStorage.setItem('session', JSON.stringify(data.Session));
       this.tableData = data.Players;
     });

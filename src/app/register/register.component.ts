@@ -38,7 +38,6 @@ export class RegisterComponent implements OnInit {
     this.authserv.RegisterUser(authBody).subscribe(data => {
       if (data.Error === null) {
         this.authserv.userSession = data;
-        sessionStorage.setItem('session', JSON.stringify(data));
         this.router.navigateByUrl('');
       } else {
         this.regError = data.Error;

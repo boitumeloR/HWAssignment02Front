@@ -109,13 +109,14 @@ export class AdminService {
     return this.http.post<Session>(this.server + path, bod, this.httpOptions);
   }
 
-  GetUserTypes() {
+  //////////////////////////////////////////////////////////
+  GetUserTypes(): Observable<UserType> {
     const path = 'api/League/GetUserTypes';
     const session  = JSON.parse(sessionStorage.getItem('session'));
 
     return this.http.post<UserType>(this.server + path, session, this.httpOptions);
   }
-
+  /////////////////////////////////////////////////////////
   AddUserType(usertype) {
     const session = JSON.parse(sessionStorage.getItem('session'));
     const path = 'api/League/AddUserType';
