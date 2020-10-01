@@ -17,7 +17,7 @@ export class UpdateUserComponent implements OnInit {
   ngOnInit(): void {
     this.serv.GetUser().subscribe(data => {
       this.currentUser = data.User;
-      this.cookie.set('session', JSON.stringify(data.Session));
+      sessionStorage.setItem('session', JSON.stringify(data.Session));
     });
   }
 
@@ -39,7 +39,7 @@ export class UpdateUserComponent implements OnInit {
 
       this.serv.UpdateUser(userdetails).subscribe(data => {
         if (data.Error === null) {
-          this.cookie.set('session', JSON.stringify(data));
+          sessionStorage.setItem('session', JSON.stringify(data));
           this.router.navigate(['logout']);
         } else {
           this.updateError = data.Error;

@@ -38,16 +38,16 @@ export class AdminService {
     })
   };
 
-  constructor(private http: HttpClient, private cookie: CookieService) { }
+  constructor(private http: HttpClient) { }
 
   GetTeams() {
     const path = 'api/League/GetSecureTeams';
-    const session = JSON.parse(this.cookie.get('session'));
+    const session = JSON.parse(sessionStorage.getItem('session'));
     return this.http.post<Teams>(this.server + path, session, this.httpOptions);
   }
 
   DeleteTeam(team) {
-    const sess = JSON.parse(this.cookie.get('session'));
+    const sess = JSON.parse(sessionStorage.getItem('session'));
     const path = 'api/League/DeleteTeam';
     const bod = {
       Team: team,
@@ -57,7 +57,8 @@ export class AdminService {
   }
 
    AddTeam(team) {
-    const sess = JSON.parse(this.cookie.get('session'));
+    const sess = JSON.parse(sessionStorage.getItem('session'));
+    console.log(sess);
     const path = 'api/League/AddTeam';
 
     const bod = {
@@ -69,15 +70,14 @@ export class AdminService {
 
   GetSecureLeagues() {
     const path = 'api/League/GetSecureLeague';
-    const session  = this.cookie.get('session');
+    const session  = JSON.parse(sessionStorage.getItem('session'));
 
     return this.http.post<Leagues>(this.server + path, session, this.httpOptions);
   }
 
   UpdateTeam(team) {
     const path = 'api/League/UpdateTeam';
-    const session = JSON.parse(this.cookie.get('session'));
-
+    const session = JSON.parse(sessionStorage.getItem('session'));
     const bod = {
       team,
       session
@@ -87,7 +87,7 @@ export class AdminService {
   }
 
   AddLeague(league) {
-    const session = JSON.parse(this.cookie.get('session'));
+    const session = JSON.parse(sessionStorage.getItem('session'));
     const path = 'api/League/AddLeague';
 
     const bod = {
@@ -100,8 +100,7 @@ export class AdminService {
 
   UpdateLeague(league) {
     const path = 'api/League/UpdateLeague';
-    const session = JSON.parse(this.cookie.get('session'));
-
+    const session = JSON.parse(sessionStorage.getItem('session'));
     const bod = {
       league,
       session
@@ -110,15 +109,16 @@ export class AdminService {
     return this.http.post<Session>(this.server + path, bod, this.httpOptions);
   }
 
-  GetUserTypes() {
+  //////////////////////////////////////////////////////////
+  GetUserTypes(): Observable<UserType> {
     const path = 'api/League/GetUserTypes';
-    const session  = this.cookie.get('session');
+    const session  = JSON.parse(sessionStorage.getItem('session'));
 
     return this.http.post<UserType>(this.server + path, session, this.httpOptions);
   }
-
+  /////////////////////////////////////////////////////////
   AddUserType(usertype) {
-    const session = JSON.parse(this.cookie.get('session'));
+    const session = JSON.parse(sessionStorage.getItem('session'));
     const path = 'api/League/AddUserType';
 
     const bod = {
@@ -131,7 +131,7 @@ export class AdminService {
 
   UpdateUserType(usertype) {
     const path = 'api/League/UpdateUserType';
-    const session = JSON.parse(this.cookie.get('session'));
+    const session = JSON.parse(sessionStorage.getItem('session'));
 
     const bod = {
       usertype,
@@ -142,7 +142,7 @@ export class AdminService {
   }
 
   DeleteUserType(usertype) {
-    const sess = JSON.parse(this.cookie.get('session'));
+    const sess = JSON.parse(sessionStorage.getItem('session'));
     const path = 'api/League/DeleteUserType';
     const bod = {
       Team: usertype,
@@ -151,15 +151,15 @@ export class AdminService {
     return this.http.post<Session>(this.server + path, bod, this.httpOptions);
   }
 
-  GetUser(): Observable<SecureUser> {
-    const sess = JSON.parse(this.cookie.get('session'));
+  GetUser() {
+    const sess = JSON.parse(sessionStorage.getItem('session'));
     const path = 'api/Auth/GetUser';
 
     return this.http.post<SecureUser>(this.server + path, sess, this.httpOptions);
   }
 
   UpdateUser(user): Observable<Session> {
-    const session = JSON.parse(this.cookie.get('session'));
+    const session = JSON.parse(sessionStorage.getItem('session'));
     const path = 'api/Auth/UpdateUser';
 
     const bod = {
@@ -168,5 +168,12 @@ export class AdminService {
     };
 
     return this.http.post<Session>(this.server + path, bod, this.httpOptions);
+  }
+
+  TestUser() {
+    const sess = JSON.parse(sessionStorage.getItem('session'));
+    const path = 'api/Auth/GetUser';
+
+    return this.http.post<SecureUser>(this.server + path, sess, this.httpOptions);
   }
 }

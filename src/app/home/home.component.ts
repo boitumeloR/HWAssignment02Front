@@ -38,7 +38,8 @@ export class HomeComponent implements OnInit {
 
   ngOnInit(): void {
     this.serv.GetPlayers().subscribe(data => {
-      this.cookie.set('session', JSON.stringify(data.Session));
+      console.log(data)
+      sessionStorage.setItem('session', JSON.stringify(data.Session));
       this.tableData = data.Players;
     });
   }
@@ -54,7 +55,7 @@ export class HomeComponent implements OnInit {
 
   DeletePlayer(element) {
     this.serv.DeletePlayer(element).subscribe(data => {
-      this.cookie.set('session', JSON.stringify(data));
+      sessionStorage.setItem('session', JSON.stringify(data));
       location.reload();
     });
   }

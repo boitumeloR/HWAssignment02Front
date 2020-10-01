@@ -16,7 +16,7 @@ export class ViewUserComponent implements OnInit {
 
   ngOnInit(): void {
     this.serv.GetUser().subscribe(data => {
-      this.cookie.set('session', JSON.stringify(data.Session));
+      sessionStorage.setItem('session', JSON.stringify(data.Session));
       console.log(data);
       this.tableData = data.User;
     });
@@ -24,7 +24,7 @@ export class ViewUserComponent implements OnInit {
 
 
   UpdateUser(element) {
-    // localStorage.setItem('UpdateUser', JSON.stringify(element));
+    localStorage.setItem('UpdateUser', JSON.stringify(element));
     this.router.navigate(['updateuser']);
   }
 }

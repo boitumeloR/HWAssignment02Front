@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { AdminService } from '../admin.service';
+import { AdminService, UserType } from '../admin.service';
 import { CookieService } from 'ngx-cookie-service';
 import { Router } from '@angular/router';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-view-user-type',
@@ -12,13 +13,15 @@ export class ViewUserTypeComponent implements OnInit {
 
   tableData: any;
   displayedColumns: string[] = ['No', 'name', 'edit/delete'];
+  userTypes$: Observable<UserType>;
   constructor(private serv: AdminService, private cookie: CookieService, private router: Router) { }
 
   ngOnInit(): void {
-    this.serv.GetUserTypes().subscribe(data => {
-      this.cookie.set('session', JSON.stringify(data.Session));
-      console.log(data);
+    this.userTypes$ = this.serv.GetUserTypes();
+    this.userTypes$.subscribe(data => {
+      sessionStorage.setItem('session', JSON.stringify(data.Session));
       this.tableData = data.UserTypes;
+      console.log(this.tableData);
     });
   }
 

@@ -16,7 +16,7 @@ export class ViewLeagueComponent implements OnInit {
 
   ngOnInit(): void {
     this.serv.GetSecureLeagues().subscribe(data => {
-      this.cookie.set('session', JSON.stringify(data.Session));
+      sessionStorage.setItem('session', JSON.stringify(data.Session));
       this.tableData = data.Leagues;
     });
   }
@@ -32,7 +32,7 @@ export class ViewLeagueComponent implements OnInit {
 
   DeleteLeague(element) {
     this.serv.DeleteTeam(element).subscribe(data => {
-      this.cookie.set('session', JSON.stringify(data));
+      sessionStorage.setItem('session', JSON.stringify(data));
       location.reload();
     });
   }

@@ -21,12 +21,14 @@ import { UpdateUserTypeComponent } from './update-user-type/update-user-type.com
 import { LogoutComponent } from './logout/logout.component';
 import { ViewUserComponent } from './view-user/view-user.component';
 import { UpdateUserComponent } from './update-user/update-user.component';
+import { LoginGuard } from './guards/login.guard';
 
 
 const routes: Routes = [
   {
     path: '',
-    component: LoginComponent
+    component: LoginComponent,
+    canActivate: [LoginGuard]
   },
   {
     path: 'register',
@@ -34,7 +36,8 @@ const routes: Routes = [
   },
   {
     path: 'login',
-    component: LoginComponent
+    component: LoginComponent,
+    canActivate: [LoginGuard]
   },
   {
     path: 'addplayer',

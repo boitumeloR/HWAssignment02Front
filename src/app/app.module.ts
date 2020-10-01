@@ -35,6 +35,10 @@ import { UpdateUserTypeComponent } from './update-user-type/update-user-type.com
 import { LogoutComponent } from './logout/logout.component';
 import { ViewUserComponent } from './view-user/view-user.component';
 import { UpdateUserComponent } from './update-user/update-user.component';
+import {SmoothScrollDirective, SmoothScrollToDirective} from 'ng2-smooth-scroll';
+import { ErrorModalComponent } from './error-modal/error-modal.component';
+import {MatDialogModule} from '@angular/material/dialog';
+
 
 @NgModule({
   declarations: [
@@ -56,9 +60,11 @@ import { UpdateUserComponent } from './update-user/update-user.component';
     UpdateUserTypeComponent,
     LogoutComponent,
     ViewUserComponent,
-    UpdateUserComponent
+    UpdateUserComponent,
+    ErrorModalComponent
   ],
   imports: [
+    MatDialogModule,
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,

@@ -8,12 +8,12 @@ import { CookieService } from 'ngx-cookie-service';
 })
 export class HeaderComponent implements OnInit {
 
-  usertype: number;
+  usertype: any;
   constructor(private cookie: CookieService) { }
 
   ngOnInit(): void {
-    const sess = JSON.parse(this.cookie.get('session'));
-    this.usertype = sess.Type;
+    const sess = JSON.parse(sessionStorage.getItem('session'));
+    if (sess !== null) {this.usertype = sess.Type; }
     console.log(this.usertype);
   }
 

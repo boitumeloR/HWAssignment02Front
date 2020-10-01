@@ -21,8 +21,8 @@
             <mat-form-field>
                 <mat-label>User Type</mat-label>
                 <mat-select id="usertype" [(value)]="selected" required>
-                    <mat-option MatInput *ngFor="let type of usertypes" [value]="type.UserRoleID"  >
-                        {{type.Description}}
+                    <mat-option MatInput *ngFor="let type of usertypes" [value]="type.UserTypeID">
+                        {{type.UserTypeDescription}}
                     </mat-option>
                 </mat-select>
             </mat-form-field>

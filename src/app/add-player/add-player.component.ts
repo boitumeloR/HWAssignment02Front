@@ -39,7 +39,7 @@ export class AddPlayerComponent implements OnInit {
     };
 
     this.serv.AddPlayer(player).subscribe(data => {
-      this.cookie.set('session', JSON.stringify(data));
+      sessionStorage.setItem('session', JSON.stringify(data));
       if (data.Error === null) {
         this.router.navigate(['home']);
       } else {
